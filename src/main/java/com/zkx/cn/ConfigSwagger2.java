@@ -29,9 +29,9 @@ public class ConfigSwagger2 {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 //页面标题
-                .title("Swagger2 构建RESTful API")
+                .title("springBoot整合demo")
                 //创建人
-                .contact(new Contact("张凯旋", "http://www.baidu.com", ""))
+                .contact(new Contact("张凯旋", "https://github.com/pangzizhangkaixuan/zero-", ""))
                 //版本号
                 .version("1.0")
                 //描述
