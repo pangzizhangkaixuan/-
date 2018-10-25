@@ -29,7 +29,7 @@ public class ConfigSwagger2 {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 //页面标题
-                .title("springBoot整合demo")
+                .title("springBoot整合Demo")
                 //创建人
                 .contact(new Contact("张凯旋", "https://github.com/pangzizhangkaixuan/zero-", ""))
                 //版本号
