@@ -57,6 +57,12 @@
 		    <artifactId>fastjson</artifactId>
 		    <version>1.2.51</version>
 		</dependency>
+		<dependency>
+		    <groupId>net.sf.json-lib</groupId>
+		    <artifactId>json-lib</artifactId>
+		    <version>2.4</version>
+		    <classifier>jdk15</classifier>
+		</dependency>
         <!-- 日志工具 -->
         <dependency> 
 		  <groupId>org.slf4j</groupId>
@@ -72,6 +78,16 @@
 		    <groupId>io.springfox</groupId>
 		    <artifactId>springfox-swagger-ui</artifactId>
 		    <version>2.9.2</version>
+		</dependency>
+		<!-- httpclient工具 -->
+		<dependency>
+		    <groupId>commons-httpclient</groupId>
+		    <artifactId>commons-httpclient</artifactId>
+		    <version>3.1</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.httpcomponents</groupId>
+		    <artifactId>httpclient</artifactId>
 		</dependency>
 	</dependencies>
 	<build>
