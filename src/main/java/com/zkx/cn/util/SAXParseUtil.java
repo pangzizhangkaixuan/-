@@ -18,7 +18,7 @@ import net.sf.json.xml.XMLSerializer;
 
 /**
  * xml解析
- * @author NSNP901
+ * @author 张凯旋
  *
  */
 public class SAXParseUtil <T> extends DefaultHandler{

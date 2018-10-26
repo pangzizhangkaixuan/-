@@ -5,38 +5,43 @@ import java.util.List;
 import com.zkx.cn.entity.Dept;
 import com.zkx.cn.entity.Response;
 
+/**
+ * 员工信息操作接口
+ * @author 张凯旋
+ *
+ */
 public interface DeptService {
 	/**
 	 * 查询所有员工信息
 	 * @return
 	 */
-	public Response<List<Dept>> deptList();
+	Response<List<Dept>> deptList();
 	
 	/**
 	 * 删除某个员工信息
 	 * @param deptno 员工ID
 	 * @return
 	 */
-	public Response<String> remove(Integer deptno);
+	Response<String> remove(Integer deptno);
 	
 	/**
 	 * 获取某个员工信息
 	 * @param deptno 员工ID
 	 * @return
 	 */
-	public Response<Dept> get(Integer deptno);
+	Response<Dept> get(Integer deptno);
 	
 	/**
 	 * 更改员工信息
 	 * @param dept
 	 * @return
 	 */
-	public Response<String> update(Dept dept);
+	Response<String> update(Dept dept);
 	
 	/**
 	 * 添加员工信息
 	 * @param dept
 	 * @return
 	 */
-	public Response<String> add(Dept dept);
+	Response<String> add(Dept dept);
 }

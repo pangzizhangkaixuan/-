@@ -12,7 +12,7 @@ import com.zkx.cn.util.StringUtil;
 
 /**
  * 返回对象
- * @author NSNP901
+ * @author 张凯旋
  *
  * @param <T>
  */
@@ -47,7 +47,6 @@ public class Response<T> implements Serializable {
 	public Response() {
 
 	}
-
 
 	public Response<Object> resultData(String res, Response<Object> response) {
 		Response<Object> bean = new Response<Object>(SUCCESS, SUCCESS_MESSAGE);

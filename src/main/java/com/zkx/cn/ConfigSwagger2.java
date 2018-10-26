@@ -12,6 +12,11 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * Swagger设置
+ * @author 张凯旋
+ *
+ */
 @Configuration
 @EnableSwagger2
 public class ConfigSwagger2 {

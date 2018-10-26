@@ -34,7 +34,7 @@ import org.apache.http.util.EntityUtils;
 
 /**
  * 接口调用工具
- * @author NSNP901
+ * @author 张凯旋
  *
  */
 public class HttpUtil {

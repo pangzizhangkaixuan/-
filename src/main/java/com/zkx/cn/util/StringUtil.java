@@ -1,5 +1,10 @@
 package com.zkx.cn.util;
 
+/**
+ * 字符串工具类
+ * @author 张凯旋
+ *
+ */
 public class StringUtil {
 
 	/**
