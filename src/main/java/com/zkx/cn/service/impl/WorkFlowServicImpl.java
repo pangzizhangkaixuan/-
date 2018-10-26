@@ -38,11 +38,10 @@ public class WorkFlowServicImpl implements WorkFlowService {
  
       
         Map<String,Object> map = new HashMap<String,Object>();  
-        map.put("apply","zhangsan");  
-        map.put("approve","lisi");  
+        map.put("role","zhangsan");  
         
         //流程启动  
-        runtimeService.startProcessInstanceByKey("leave",map);  
+        runtimeService.startProcessInstanceByKey("myProcess",map);  
        
         List<Task> tq=taskService.createTaskQuery().taskAssignee("zhangsan").list();
         System.out.println(tq.size());
