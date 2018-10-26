@@ -42,25 +42,6 @@ public class HttpUtil {
 	private static final String JSON = "application/json";//json请求类型
 	private static final String FORM_DATA = "application/x-www-form-urlencoded;charset=UTF-8;";//formdata请求类型
 	
-//  webService借口调用示例
-//	public static void main(String[] args) {
-//		String url = "http://chowkd1600105:8080/OpSOA/cxf/hempolicy4eser";
-//		StringBuffer sb = new StringBuffer();
-//		sb.append(
-//				"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.eservice.getPolicyInfo.policysrv.cn.aia/\">");
-//		sb.append("<soapenv:Header/>");
-//		sb.append("<soapenv:Body>");
-//		sb.append("<ser:hempolicy4eser>");
-//		sb.append("<policyNo>C010000980</policyNo>");
-//		sb.append("</ser:hempolicy4eser>");
-//		sb.append("</soapenv:Body>");
-//		sb.append("</soapenv:Envelope>");
-//
-//		String str = doWebService(url, sb.toString());
-		
-//		PolicyInfoVo policyInfoVo = SAXParseUtil.parseToList(str, PolicyInfoVo.class);
-//	}
-	
 	/**
 	 * 发送webService接口请求
 	 * @param url 请求地址（删除?wsdl）
