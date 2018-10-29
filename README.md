@@ -19,13 +19,13 @@
 	<version>5.21.0</version>    
     </dependency>    
 ##### 2、不使用Spring Boot Stater，使用配置类集成  
-    `<parent>`  
-   	`<groupId>org.springframework.boot</groupId>`  
-    	`<artifactId>spring-boot-starter-parent</artifactId>`  
-    	`<version>2.0.6.RELEASE</version>`  
-  	`</parent>`  
-    `<dependency>`  
-    	`<groupId>org.activiti</groupId>`  
-    	`<artifactId>activiti-spring</artifactId>`  
-    	`<version>6.0.0</version>`  
-    `</dependency>`   
+    <parent>   
+   	<groupId>org.springframework.boot</groupId>  
+    	<artifactId>spring-boot-starter-parent</artifactId>   
+    	<version>2.0.6.RELEASE</version>  
+  	</parent>  
+    <dependency>    
+    	<groupId>org.activiti</groupId>    
+    	<artifactId>activiti-spring</artifactId>   
+    	<version>6.0.0</version>    
+    </dependency>     
