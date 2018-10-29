@@ -7,7 +7,7 @@
 #### 二、集成mybatis  
 #### 三、集成swagger  
 #### 四、集成activiti  
-##### 1、原有Spring Boot Stater不支持2.0.6版本springBoot，所以更改依赖版本  
+##### 1、原有Spring Boot Stater不支持2.0.6版本springBoot，所以更改依赖版本(流程图一定要放在processes文件夹下)  
     <parent>    
     	<groupId>org.springframework.boot</groupId>   
     	<artifactId>spring-boot-starter-parent</artifactId>     
