@@ -9,7 +9,7 @@
 #### 四、集成activiti  
 ##### 1、原有Spring Boot Stater不支持2.0.6版本springBoot，所以更改依赖版本  
     <parent>    
-    	`<groupId>org.springframework.boot</groupId>`   
+    	<groupId>org.springframework.boot</groupId>   
     	`<artifactId>spring-boot-starter-parent</artifactId>`     
     	`<version>1.5.2.RELEASE</version>`  
   	`</parent>`    
