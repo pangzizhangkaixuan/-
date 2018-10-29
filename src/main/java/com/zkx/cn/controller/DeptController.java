@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.zkx.cn.entity.Dept;
-import com.zkx.cn.entity.Response;
-import com.zkx.cn.service.DeptService;
+import com.zkx.cn.domain.Dept;
+import com.zkx.cn.domain.Response;
+import com.zkx.cn.service.personel.DeptService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

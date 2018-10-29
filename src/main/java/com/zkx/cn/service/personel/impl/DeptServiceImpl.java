@@ -1,14 +1,14 @@
-package com.zkx.cn.service.impl;
+package com.zkx.cn.service.personel.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.zkx.cn.entity.Dept;
-import com.zkx.cn.entity.Response;
+import com.zkx.cn.domain.Dept;
+import com.zkx.cn.domain.Response;
 import com.zkx.cn.mapper.DeptMapper;
-import com.zkx.cn.service.DeptService;
+import com.zkx.cn.service.personel.DeptService;
 @Service
 public class DeptServiceImpl implements DeptService{
 	@Autowired
@@ -29,7 +29,7 @@ public class DeptServiceImpl implements DeptService{
 		
 		if (result == 0) {
 			response.setCode(Response.ERROR);
-			response.setMsg("删除失败");
+			response.setMsg("删除失败,未找到对应数据");
 		}
 		
 		response.setData(String.valueOf(result));
@@ -51,7 +51,7 @@ public class DeptServiceImpl implements DeptService{
 		
 		if (result == 0) {
 			response.setCode(Response.ERROR);
-			response.setMsg("修改失败");
+			response.setMsg("修改失败,未找到对应数据");
 		}
 		
 		response.setData(String.valueOf(result));

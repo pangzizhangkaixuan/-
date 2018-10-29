@@ -2,7 +2,7 @@ package com.zkx.cn.mapper;
 
 import java.util.List;
 
-import com.zkx.cn.entity.Dept;
+import com.zkx.cn.domain.Dept;
 public interface DeptMapper {
 	public List<Dept> list();
 	public int remove(Integer deptno);

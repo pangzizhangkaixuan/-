@@ -1,4 +1,4 @@
-package com.zkx.cn.entity;
+package com.zkx.cn.domain;
 
 /**
  * 流程参数对象
@@ -9,7 +9,8 @@ public class BPMNParam {
 
 	private String rank;// 回退职级
 	private String link;// 流程方向（jump回退，default默认下一级）
-	private String role;// 节点所属人
+	private String role;// 节点执行人
+	private String processID;//流程ID
 	private static BPMNParam param;
 
 	private BPMNParam() {
@@ -50,5 +51,13 @@ public class BPMNParam {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public String getProcessID() {
+		return processID;
+	}
+
+	public void setProcessID(String processID) {
+		this.processID = processID;
 	}
 }

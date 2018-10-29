@@ -1,4 +1,4 @@
-package com.zkx.cn.service.impl;
+package com.zkx.cn.service.workflow.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,11 +7,14 @@ import java.util.Map;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
+import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.zkx.cn.service.WorkFlowService;
+import com.zkx.cn.domain.BPMNParam;
+import com.zkx.cn.service.workflow.WorkFlowService;
+import com.zkx.cn.util.MapUtil;
 
 /**
  * 流程控制接口实现类
@@ -27,7 +30,38 @@ public class WorkFlowServicImpl implements WorkFlowService {
     private TaskService taskService;  
     @Autowired
     private RepositoryService repositoryService;
+    
+    private BPMNParam param = BPMNParam.getBPMNParam();
 	
+	@Override
+	public String startProcess() {
+		Map<String, Object> map;
+		String processID = "";
+		try {
+			map = MapUtil.objectToMap(param);
+			ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("myProcess",map);
+			processID = processInstance.getProcessDefinitionId();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return processID;
+	}
+	
+	@Override
+	public void performTask (String userId) {
+		Map<String, Object> map;
+		try {
+			map = MapUtil.objectToMap(param);
+			//获取任务ID执行该任务，并通过设置流程参数控制流程走向
+			taskService.complete(getTaskId(param.getProcessID(), userId), map);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
 	@Override
 	public void workFlowTest() {
         System.out.println("method startActivityDemo begin....");  
@@ -63,6 +97,22 @@ public class WorkFlowServicImpl implements WorkFlowService {
         }  
      
         System.out.println("method startActivityDemo end....");  
+	}
+	
+	/**
+	 * 获取任务id
+	 * @param processID 流程id一个流程的唯一标识
+	 * @param userId 执行人id当前任务执行人的id
+	 * @return
+	 */
+	private String getTaskId(String processID, String userId) {
+		//获取当前流程当前任务
+		Task task = taskService.createTaskQuery()//获取任务集
+				.processDefinitionId(processID)//筛选条件：流程id
+				.taskAssignee(userId)//筛选条件任务：执行人
+				.singleResult();//获取任务对象
+		
+		return task.getId();
 	}
 
 }

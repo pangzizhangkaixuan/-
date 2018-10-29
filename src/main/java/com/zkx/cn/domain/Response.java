@@ -1,4 +1,4 @@
-package com.zkx.cn.entity;
+package com.zkx.cn.domain;
 
 import java.io.Serializable;
 

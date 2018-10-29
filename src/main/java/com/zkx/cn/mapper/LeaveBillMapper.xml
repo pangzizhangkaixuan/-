@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkx.cn.mapper.LeaveBillMapper">
+	<select id="list" resultType="com.zkx.cn.entity.LeaveBill">
+		select * from leave_bill
+	</select>
+	<select id="get" resultType="com.zkx.cn.entity.LeaveBill" parameterType="java.lang.String">
+		select * from leave_bill where processID=#{processID}
+	</select>
+	<delete id="remove" parameterType="java.lang.String">
+		delete from leave_bill where processID=#{processID}
+	</delete>
+	<update id="update" parameterType="com.zkx.cn.entity.LeaveBill">
+		update leave_bill set days=#{days},content=#{content},remark=#{remark},leaveDate=#{leaveDate},state=#{state},userId=#{userId} where processID=#{processID}
+	</update>
+	<insert id="add" parameterType="com.zkx.cn.entity.LeaveBill">
+		insert into leave_bill(userId,days,content,remark,leaveDate,state,processID) values (#{userId},#{days},#{content},#{remark},#{leaveDate},#{state},#{processID})
+	</insert>
+</mapper>
