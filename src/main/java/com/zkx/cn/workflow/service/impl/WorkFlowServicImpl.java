@@ -1,4 +1,4 @@
-package com.zkx.cn.service.workflow.impl;
+package com.zkx.cn.workflow.service.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,8 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zkx.cn.domain.BPMNParam;
-import com.zkx.cn.service.workflow.WorkFlowService;
 import com.zkx.cn.util.MapUtil;
+import com.zkx.cn.workflow.service.WorkFlowService;
 
 /**
  * 流程控制接口实现类

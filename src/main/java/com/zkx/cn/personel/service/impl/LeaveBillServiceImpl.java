@@ -1,15 +1,17 @@
-package com.zkx.cn.service.personel.impl;
+package com.zkx.cn.personel.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.zkx.cn.domain.LeaveBill;
 import com.zkx.cn.domain.Response;
-import com.zkx.cn.mapper.LeaveBillMapper;
-import com.zkx.cn.service.personel.LeaveBillService;
+import com.zkx.cn.personel.mapper.LeaveBillMapper;
+import com.zkx.cn.personel.service.LeaveBillService;
 import com.zkx.cn.util.ListUtil;
 
+@Service
 public class LeaveBillServiceImpl implements LeaveBillService{
 
 	@Autowired

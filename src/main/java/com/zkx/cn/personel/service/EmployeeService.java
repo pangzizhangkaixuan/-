@@ -1,4 +1,4 @@
-package com.zkx.cn.service.personel;
+package com.zkx.cn.personel.service;
 
 import java.util.List;
 

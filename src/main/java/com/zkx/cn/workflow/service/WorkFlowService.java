@@ -1,4 +1,4 @@
-package com.zkx.cn.service.workflow;
+package com.zkx.cn.workflow.service;
 
 /**
  * 流程控制接口

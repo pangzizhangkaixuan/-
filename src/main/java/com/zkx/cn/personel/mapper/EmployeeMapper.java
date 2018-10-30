@@ -1,4 +1,4 @@
-package com.zkx.cn.mapper;
+package com.zkx.cn.personel.mapper;
 
 import java.util.List;
 

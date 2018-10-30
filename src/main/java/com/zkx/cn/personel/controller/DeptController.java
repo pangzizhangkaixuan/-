@@ -1,4 +1,4 @@
-package com.zkx.cn.controller;
+package com.zkx.cn.personel.controller;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.zkx.cn.domain.Dept;
 import com.zkx.cn.domain.Response;
-import com.zkx.cn.service.personel.DeptService;
+import com.zkx.cn.personel.service.DeptService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

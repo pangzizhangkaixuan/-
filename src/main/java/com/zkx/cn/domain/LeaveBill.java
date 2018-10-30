@@ -16,10 +16,10 @@ public class LeaveBill {
 	private String remark;// 备注
 	private Integer state=0;// 请假单状态 0初始录入,1.开始审批,2为审批完成
 
-	public String getId() {
+	public String getProcessID() {
 		return processID;
 	}
-	public void setId(String processID) {
+	public void setProcessID(String processID) {
 		this.processID = processID;
 	}
 	public String getDays() {

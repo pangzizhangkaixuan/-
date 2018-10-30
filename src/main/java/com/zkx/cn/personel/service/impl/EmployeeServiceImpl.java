@@ -1,15 +1,17 @@
-package com.zkx.cn.service.personel.impl;
+package com.zkx.cn.personel.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.zkx.cn.domain.Employee;
 import com.zkx.cn.domain.Response;
-import com.zkx.cn.mapper.EmployeeMapper;
-import com.zkx.cn.service.personel.EmployeeService;
+import com.zkx.cn.personel.mapper.EmployeeMapper;
+import com.zkx.cn.personel.service.EmployeeService;
 import com.zkx.cn.util.ListUtil;
 
+@Service
 public class EmployeeServiceImpl implements EmployeeService{
 
 	@Autowired

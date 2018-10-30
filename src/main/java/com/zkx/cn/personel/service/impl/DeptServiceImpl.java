@@ -1,4 +1,4 @@
-package com.zkx.cn.service.personel.impl;
+package com.zkx.cn.personel.service.impl;
 
 import java.util.List;
 
@@ -7,8 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.zkx.cn.domain.Dept;
 import com.zkx.cn.domain.Response;
-import com.zkx.cn.mapper.DeptMapper;
-import com.zkx.cn.service.personel.DeptService;
+import com.zkx.cn.personel.mapper.DeptMapper;
+import com.zkx.cn.personel.service.DeptService;
+
 @Service
 public class DeptServiceImpl implements DeptService{
 	@Autowired

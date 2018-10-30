@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  */
 @SpringBootApplication
-@MapperScan("com.zkx.cn.mapper")
+@MapperScan("com.zkx.cn.*.mapper")
 public class App 
 {
 	public static void main(String[] args) {
