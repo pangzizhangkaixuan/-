@@ -5,15 +5,15 @@
 		select * from leave_bill
 	</select>
 	<select id="get" resultType="com.zkx.cn.domain.LeaveBill" parameterType="java.lang.String">
-		select * from leave_bill where processID=#{processID}
+		select * from leave_bill where process_id=#{processId}
 	</select>
 	<delete id="remove" parameterType="java.lang.String">
-		delete from leave_bill where processID=#{processID}
+		delete from leave_bill where process_id=#{processId}
 	</delete>
 	<update id="update" parameterType="com.zkx.cn.domain.LeaveBill">
-		update leave_bill set days=#{days},content=#{content},remark=#{remark},leaveDate=#{leaveDate},state=#{state},userId=#{userId} where processID=#{processID}
+		update leave_bill set days=#{days},content=#{content},remark=#{remark},leave_date=#{leaveDate},state=#{state},user_id=#{userId} where process_Id=#{processId}
 	</update>
 	<insert id="add" parameterType="com.zkx.cn.domain.LeaveBill">
-		insert into leave_bill(userId,days,content,remark,leaveDate,state,processID) values (#{userId},#{days},#{content},#{remark},#{leaveDate},#{state},#{processID})
+		insert into leave_bill(user_id,days,content,remark,leave_date,state,process_id) values (#{userId},#{days},#{content},#{remark},#{leaveDate},#{state},#{processId})
 	</insert>
 </mapper>

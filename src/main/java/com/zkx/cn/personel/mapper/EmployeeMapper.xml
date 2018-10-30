@@ -5,10 +5,10 @@
 		select * from employee
 	</select>
 	<select id="get" resultType="com.zkx.cn.domain.Employee" parameterType="java.lang.String">
-		select * from employee where userId=#{userId}
+		select * from employee where user_id=#{userId}
 	</select>
 	<delete id="remove" parameterType="java.lang.String">
-		delete from employee where userId=#{userId}
+		delete from employee where user_id=#{userId}
 	</delete>
 	<update id="update" parameterType="com.zkx.cn.domain.Employee">
 		update employee set name=#{name},password=#{password},email=#{email},role=#{role} where userId=#{userId}
