@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.zkx.cn.domain.ApplyVo;
 import com.zkx.cn.domain.BPMNParam;
 import com.zkx.cn.domain.LeaveBill;
+import com.zkx.cn.domain.Response;
 import com.zkx.cn.personel.service.LeaveBillService;
 import com.zkx.cn.workflow.service.WorkFlowService;
 
@@ -30,8 +32,6 @@ public class WorkFlowController {
 	@Autowired
 	private LeaveBillService leaveBillService;
 	
-	private BPMNParam param = BPMNParam.getBPMNParam();
-	
 	@ApiOperation(value = "activiti集成测试", notes = "activiti集成测试")
 	@GetMapping("/test")
 	public void workFlowTest() {
@@ -40,21 +40,29 @@ public class WorkFlowController {
 	
 	@ApiOperation(value = "申请提交", notes = "申请提交")
 	@PostMapping("/apply")
-	public void apply(LeaveBill leaveBill) {
-		String userId = leaveBill.getUserId();
-		param.setLink("jump");
-		param.setRank(userId);
-		String processID = workFlow.startProcess();
-		param.setProcessID(processID);
-		leaveBill.setProcessID(processID);
-		workFlow.performTask(userId);
+	public Response<String> apply(ApplyVo applyVo) {
+		Response<String> res = new Response<>(Response.SUCCESS, Response.SUCCESS_MESSAGE);
+		BPMNParam param = applyVo.getParam();
+		LeaveBill leaveBill = applyVo.getLeaveBill();
+		String processId = workFlow.startProcess(param);
 		
-		leaveBillService.add(leaveBill);
+		//判断流程启动是否成功
+		if (processId == null) {
+			res.setCode(Response.ERROR);
+			res.setMsg("申请流程失败");
+			return res;
+		}
+		//请假信息入库
+		leaveBill.setProcessId(processId);
+		leaveBillService.update(leaveBill);
+		
+		return res;
 	}
 	
 	@ApiOperation(value = "流程跳转", notes = "流程跳转")
 	@PostMapping("/jump")
-	public void jumpFlow() {
+	public Response<String> jumpFlow() {
+		return null;
 		
 	}
 	

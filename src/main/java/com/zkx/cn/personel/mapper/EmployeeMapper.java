@@ -5,9 +5,10 @@ import java.util.List;
 import com.zkx.cn.domain.Employee;
 
 public interface EmployeeMapper {
-	public List<Employee> list();
-	public int remove(String userId);
-	public Employee get(String userId);
-	public int update(Employee employee);
-	public int add(Employee employee);
+	List<Employee> list();
+	int remove(String userId);
+	Employee get(String userId);
+	int update(Employee employee);
+	int add(Employee employee);
+	String getLeader(String userId);
 }

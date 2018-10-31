@@ -42,6 +42,17 @@ public class HttpUtil {
 	private static final String JSON = "application/json";//json请求类型
 	private static final String FORM_DATA = "application/x-www-form-urlencoded;charset=UTF-8;";//formdata请求类型
 	
+	public static void main(String[] args) {
+		String URL = "https://euat.aia.com.cn/ipassport/ssologin/ssoLogin/secureLoginAction.do?companyId=9986&password=ee79976c9380d5e337fc1c095ece8c8f22f91f306ceeb161fa51fecede2c4ba1&userId=TEST012&requestFrom=ios&handleSessionTable=&resultFlag=json";
+		try {
+			String json = doGet(URL);
+			System.out.println(json);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	/**
 	 * 发送webService接口请求
 	 * @param url 请求地址（删除?wsdl）

@@ -8,7 +8,8 @@ import java.util.Date;
  *
  */
 public class LeaveBill {
-	private String processID;//主键ID（为activiti启动时获取的流程ID用于绑定流程）
+	private String id;//主键ID
+	private String processId;//为activiti启动时获取的流程ID用于绑定流程
 	private String days;// 请假天数
 	private String userId;//请假人ID
 	private String content;// 请假内容
@@ -16,11 +17,18 @@ public class LeaveBill {
 	private String remark;// 备注
 	private Integer state=0;// 请假单状态 0初始录入,1.开始审批,2为审批完成
 
-	public String getProcessID() {
-		return processID;
+	
+	public String getId() {
+		return id;
 	}
-	public void setProcessID(String processID) {
-		this.processID = processID;
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getProcessId() {
+		return processId;
+	}
+	public void setProcessId(String processId) {
+		this.processId = processId;
 	}
 	public String getDays() {
 		return days;

@@ -9,10 +9,12 @@ import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
+import org.activiti.engine.task.TaskQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zkx.cn.domain.BPMNParam;
+import com.zkx.cn.personel.mapper.EmployeeMapper;
 import com.zkx.cn.util.MapUtil;
 import com.zkx.cn.workflow.service.WorkFlowService;
 
@@ -30,46 +32,56 @@ public class WorkFlowServicImpl implements WorkFlowService {
     private TaskService taskService;  
     @Autowired
     private RepositoryService repositoryService;
+    @Autowired
+    private EmployeeMapper employeeMapper;
     
-    private BPMNParam param = BPMNParam.getBPMNParam();
-	
+    
 	@Override
-	public String startProcess() {
-		Map<String, Object> map;
-		String processID = "";
+	public String startProcess(BPMNParam param) {
+		String processId = null;
+		String key = param.getProcessKey();
+		Map<String, Object> map;//流程参数
+		
 		try {
+			//根据流程Key启动流程并通过流程参数设置首节点执行人
 			map = MapUtil.objectToMap(param);
-			ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("myProcess",map);
-			processID = processInstance.getProcessDefinitionId();
+			ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(key, map);
+			//获取该次流程的唯一流程参数
+			processId = processInstance.getProcessDefinitionId();
+			//执行流程一次进入第一节点
+			performTask (param);
 		} catch (Exception e) {
 			e.printStackTrace();
+			processId = null;
 		}
 		
-		return processID;
+		return processId;
 	}
 	
 	@Override
-	public void performTask (String userId) {
-		Map<String, Object> map;
+	public void performTask (BPMNParam param) {
+		String taskId;
+		String userId = param.getRole();
+		userId = employeeMapper.getLeader(userId);//获取上级的userId，将下一节点执行人设置为上级
+		param.setRole(userId);
+		Map<String, Object> map;//流程参数
 		try {
 			map = MapUtil.objectToMap(param);
+			taskId = getTaskId(param);
 			//获取任务ID执行该任务，并通过设置流程参数控制流程走向
-			taskService.complete(getTaskId(param.getProcessID(), userId), map);
+			taskService.complete(taskId, map);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 	}
-
+	
 	@Override
 	public void workFlowTest() {
         System.out.println("method startActivityDemo begin....");  
         
         System.out.println( "调用流程存储服务，查询部署数量："
                 + repositoryService.createDeploymentQuery().count());
-        
- 
       
         Map<String,Object> map = new HashMap<String,Object>();  
         map.put("role","zhangsan");  
@@ -99,19 +111,19 @@ public class WorkFlowServicImpl implements WorkFlowService {
         System.out.println("method startActivityDemo end....");  
 	}
 	
-	/**
-	 * 获取任务id
-	 * @param processID 流程id一个流程的唯一标识
-	 * @param userId 执行人id当前任务执行人的id
-	 * @return
-	 */
-	private String getTaskId(String processID, String userId) {
+	@Override
+	public String getTaskId(BPMNParam param) {
+		String processId = param.getProcessId();
+		String userId = param.getRole();
 		//获取当前流程当前任务
-		Task task = taskService.createTaskQuery()//获取任务集
-				.processDefinitionId(processID)//筛选条件：流程id
-				.taskAssignee(userId)//筛选条件任务：执行人
-				.singleResult();//获取任务对象
+		TaskQuery taskQuery = taskService.createTaskQuery()//获取任务集
+				.processDefinitionId(processId);//筛选条件：流程id
 		
+		if (userId != null) {
+			taskQuery = taskQuery.taskAssignee(userId);//筛选条件任务：执行人
+		}
+		
+		Task task = taskQuery.singleResult();
 		return task.getId();
 	}
 
