@@ -31,6 +31,8 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 接口调用工具
@@ -41,17 +43,7 @@ public class HttpUtil {
 	
 	private static final String JSON = "application/json";//json请求类型
 	private static final String FORM_DATA = "application/x-www-form-urlencoded;charset=UTF-8;";//formdata请求类型
-	
-	public static void main(String[] args) {
-		String URL = "https://euat.aia.com.cn/ipassport/ssologin/ssoLogin/secureLoginAction.do?companyId=9986&password=ee79976c9380d5e337fc1c095ece8c8f22f91f306ceeb161fa51fecede2c4ba1&userId=TEST012&requestFrom=ios&handleSessionTable=&resultFlag=json";
-		try {
-			String json = doGet(URL);
-			System.out.println(json);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	private static Logger logger = LoggerFactory.getLogger(HttpUtil.class);
 	
 	/**
 	 * 发送webService接口请求
@@ -61,8 +53,8 @@ public class HttpUtil {
 	 */
 	public static String doWebService(String url, String soapXml) {
 		
-		System.out.println("请求地址：" + url);
-		System.out.println("请求Xml:" + soapXml);
+		logger.debug("请求地址：" + url);
+		logger.debug("请求Xml:" + soapXml);
 		String retStr = "";
 		// HttpClient
 		HttpClient httpClient = new HttpClient();
@@ -113,7 +105,7 @@ public class HttpUtil {
 		//请求头设置请求类型
 		headerMap.put("Content-Type", FORM_DATA);
 		
-		System.out.println("请求类型：post--" + FORM_DATA);
+		logger.debug("请求类型：post--" + FORM_DATA);
 		
 		return doPost(url, entity, headerMap);
 	}
@@ -133,7 +125,7 @@ public class HttpUtil {
 		//请求头设置请求类型
 		headerMap.put("Content-Type", JSON);
 		
-		System.out.println("请求类型：post--" + JSON);
+		logger.debug("请求类型：post--" + JSON);
 		
 		return doPost(url, entity, headerMap);
 	}
@@ -153,8 +145,8 @@ public class HttpUtil {
 		for (Entry<String, String> entry : headerMap.entrySet()) {
 			request.addHeader(entry.getKey(), entry.getValue());
 		}
-		
-		System.out.println("请求类型：get");
+		logger.debug("请求地址：" + url);
+		logger.debug("请求类型：get");
 		
 		return doRequest(request);
 	}
@@ -167,8 +159,8 @@ public class HttpUtil {
 	public static String doGet(String url) throws Exception{
 		//创建get请求对象
 		HttpGet request = new HttpGet(url);
-		
-		System.out.println("请求类型：get");
+		logger.debug("请求地址：" + url);
+		logger.debug("请求类型：get");
 		
 		return doRequest(request);
 	}
@@ -184,7 +176,7 @@ public class HttpUtil {
 	public static String doPost(String url, HttpEntity entity, Map<String, String> headerMap) throws Exception{
 		//创建post请求对象
 		HttpPost request = new HttpPost(url);
-		
+		logger.debug("请求地址：" + url);
 		//设置请求头
 		for (Entry<String, String> entry : headerMap.entrySet()) {
 			request.addHeader(entry.getKey(), entry.getValue());
@@ -202,6 +194,7 @@ public class HttpUtil {
 	 */
 	public static String doPost(String url, HttpEntity entity) throws Exception{
 		//创建post请求对象
+		logger.debug("请求地址：" + url);
 		HttpPost request = new HttpPost(url);
 		request.setEntity(entity);
 		return doRequest(request);
